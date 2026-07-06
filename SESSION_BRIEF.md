@@ -13,6 +13,8 @@
 
 _(Fill in: one or two sentences on what this project does.)_
 
+**Twin project:** Oshey (`C:\MoC-DEM\Projects\Oshey`) — the backend this app talks to.
+
 **Orientation (read in this order):**
 1. This file — current task and last known state
 2. Active step file (see LIVE section below) — full detail for the current task only
