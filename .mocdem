@@ -1,0 +1,13 @@
+{
+  "name": "Oshey-mobile",
+  "type": "expo",
+  "created": "2026-07-06",
+  "mocdem_version": "1.0.0",
+  "requires_tools": [
+    "npm"
+  ],
+  "run": {},
+  "tool_cwd": {},
+  "tools": {},
+  "scripts": {}
+}
