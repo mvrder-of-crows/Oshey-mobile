@@ -1,34 +1,33 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
+import { Tabs } from "expo-router";
+import { Home, Clock, User } from "lucide-react-native";
+import { colors, fonts } from "@/theme/tokens";
 
-import { HapticTab } from '@/components/haptic-tab';
-import { IconSymbol } from '@/components/ui/icon-symbol';
-import { Colors } from '@/constants/theme';
-import { useColorScheme } from '@/hooks/use-color-scheme';
-
+// Ported from oshey-app/navigation/MainTabs.tsx. Screens are named home/
+// history/profile (not "index") so this group never claims the root "/"
+// path — app/index.tsx (Onboarding) owns that. Navigate here explicitly via
+// router.push("/(tabs)/home"), never a bare "/(tabs)".
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerShown: false,
-        tabBarButton: HapticTab,
-      }}>
+        tabBarActiveTintColor: colors.ink,
+        tabBarInactiveTintColor: colors.slate,
+        tabBarStyle: { borderTopColor: colors.line, backgroundColor: colors.paper },
+        tabBarLabelStyle: { fontFamily: fonts.body, fontSize: 10 },
+      }}
+    >
       <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
-        }}
+        name="home"
+        options={{ title: "Home", tabBarIcon: ({ color, size }) => <Home color={color} size={size} /> }}
       />
       <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
-        }}
+        name="history"
+        options={{ title: "Ledger", tabBarIcon: ({ color, size }) => <Clock color={color} size={size} /> }}
+      />
+      <Tabs.Screen
+        name="profile"
+        options={{ title: "Profile", tabBarIcon: ({ color, size }) => <User color={color} size={size} /> }}
       />
     </Tabs>
   );
