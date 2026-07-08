@@ -79,8 +79,24 @@ success-screen animation) — standard pattern, left as warnings.
 **Next actions:**
 1. `Projects/oshey-app` deleted this session now that the port is verified
    working (per the step file's done criteria and Sensei's instruction).
-2. Manual on-device/simulator walkthrough still owed — `tsc`/lint/bundle
-   all pass, but nobody has tapped through the actual flow yet on iOS/
-   Android/web. Do that before treating this as fully signed off.
-3. No roadmap steps written beyond this one yet — next feature work needs
+2. No roadmap steps written beyond this one yet — next feature work needs
    its own step file per project convention.
+
+**Manual on-device walkthrough (2026-07-08, Sensei via Expo Go on iOS):**
+Confirmed real interaction works (nav between screens, live bank-detection
+timing, rate ticker, haptics, dark-mode toggle, biometric prompt) — this
+is not a static mockup. Two things flagged, both expected at this stage,
+noted here rather than filed as bugs:
+- **This is still a template.** Every number on screen (balances, recipient
+  name, transaction history, rate) is hardcoded in `data/wallet.ts` and
+  inline screen arrays — nothing is wired to the Oshey backend yet (which
+  is itself only at Step 1: config + `/health`, no real endpoints). Swapping
+  these for real API calls is expected, ongoing work as backend steps land
+  (recipient verification, quote/fee engine, escrow, payout), not a defect
+  in this pass.
+- **Some navigations don't resolve / some pages don't exist yet.** Not
+  isolated to specific routes this session — Sensei's read is that this
+  will get sorted out naturally as backend-driven screens get built out
+  rather than needing a dedicated fix pass right now. If a specific broken
+  nav gets identified later, file it as a proper bug rather than leaving it
+  implicit here.
